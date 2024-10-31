@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estadísticas de Empleados</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Estadísticas de Empleados</h1>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Descripción</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total de Horas Trabajadas</td>
+                    <td>{{ total_horas }} Horas</td>
+                </tr>
+                <tr>
+                    <td>Promedio de Horas Trabajadas</td>
+                    <td>{{ promedio_horas }} Horas</td>
+                </tr>
+                <tr>
+                    <td>Total de Salario por Hora</td>
+                    <td>{{ total_salario_hora }} QTZ</td>
+                </tr>
+                <tr>
+                    <td>Promedio de Salario por Hora</td>
+                    <td>{{ promedio_salario_hora }} QTZ</td>
+                </tr>
+                <tr>
+                    <td>Total de Salario Bruto</td>
+                    <td>{{ total_salario_bruto }} QTZ</td>
+                </tr>
+                <tr>
+                    <td>Promedio de Salario Bruto</td>
+                    <td>{{ promedio_salario_bruto }} QTZ</td>
+                </tr>
+                <tr>
+                    <td>Total de Salario Neto</td>
+                    <td>{{ total_salario_neto }} QTZ</td>
+                </tr>
+                <tr>
+                    <td>Promedio de Salario Neto</td>
+                    <td>{{ promedio_salario_neto }} QTZ</td>
+                </tr>
+                <tr>
+                    <td>Salario Neto Más Alto</td>
+                    <td>{{ salario_mas_alto }} QTZ</td>
+                </tr>
+                <tr>
+                    <td>Salario Neto Más Bajo</td>
+                    <td>{{ salario_mas_bajo }} QTZ</td>
+                </tr>
+                <tr>
+                    <td>Mediana de Salario Neto</td>
+                    <td>{{ mediana_salario_neto }} QTZ</td>
+                </tr>
+                <tr>
+                    <td>Mediana Deduccion IGGS</td>
+                    <td>{{ deduccion_iggs_promedio }} QTZ</td>
+                </tr>
+                <tr>
+                    <td>Mediana Deduccion ISR</td>
+                    <td>{{ deduccion_isr_promedio }} QTZ</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="{{ url_for('get_empleados') }}" class="btn btn-primary">Volver a Empleados</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

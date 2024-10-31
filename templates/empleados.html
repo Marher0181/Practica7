@@ -15,13 +15,20 @@
     <div class="container">
         <h1>Lista de Empleados</h1>
         <a href="{{ url_for('crear_empleado') }}" class="btn btn-primary mb-2">Nuevo Empleado</a>
-        <a href="{{ url_for('upload') }}" class="btn btn-secondary mb-2">Subir CSV</a>
-        <a href="{{ url_for('logout') }}" class="btn btn-secondary mb-2">Cerrar Sesión</a>
+        <a href="{{ url_for('upload') }}" class="btn btn-success mb-2">Subir CSV</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger mb-2">Cerrar Sesión</a>
+        <a href="{{ url_for('usuarios') }}" class="btn btn-info mb-2">Usuarios</a>
+        <a href="{{ url_for('estadisticas_empleados') }}">Ver Estadísticas de Empleados</a>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Nombre</th>
+                    <th>Salario por Hora</th>
+                    <th>Horas Trabajadas</th>
                     <th>Salario Bruto</th>
+                    <th>Deducciones totales</th>
+                    <th>Deducciones IGGS</th>
+                    <th>Deducciones ISR</th>
                     <th>Salario Neto</th>
                     <th>Acciones</th>
                 </tr>
@@ -30,7 +37,12 @@
                 {% for empleado in empleados %}
                     <tr>
                         <td>{{ empleado['NombreEmpleado'] }}</td>
+                        <td>{{ empleado['SalarioPorHora'] }}</td>
+                        <td>{{ empleado['HorasTrabajadas'] }}</td>
                         <td>Q{{ empleado['SalarioBruto'] | round(2) }}</td>
+                        <td>Q{{ empleado['DeduccionesTotales']}}</td>
+                        <td>Q{{ empleado['IGGS']}}</td>
+                        <td>Q{{ empleado['ISR']}}</td>
                         <td>Q{{ empleado['SalarioNeto'] | round(2) }}</td>
                         <td>
                             <a href="{{ url_for('editar_empleado', id=empleado['_id']) }}" class="btn btn-warning btn-sm">Editar</a>

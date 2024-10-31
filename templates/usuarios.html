@@ -20,13 +20,13 @@
                 <input type="password" class="form-control" name="contrasena" required>
             </div>
             <button type="submit" class="btn btn-primary">Crear Usuario</button>
+            <a href="{{ url_for('get_empleados') }}" class="btn btn-secondary">Empleados</a>
         </form>
 
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Nombre de Usuario</th>
-                    <th>Contraseña</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -34,7 +34,6 @@
                 {% for usuario in usuarios %}
                 <tr>
                     <td>{{ usuario['nombre'] }}</td>
-                    <td>{{ usuario['contrasena'] }}</td>
                     <td>
                         <button class="btn btn-warning" data-toggle="modal" data-target="#editarModal{{ usuario['_id'] }}">Editar</button>
                         <form action="{{ url_for('eliminar_usuario', id=usuario['_id']) }}" method="POST" style="display:inline;">
@@ -43,7 +42,6 @@
                     </td>
                 </tr>
 
-                <!-- Modal para editar un usuario -->
                 <div class="modal fade" id="editarModal{{ usuario['_id'] }}" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
