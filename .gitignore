@@ -1,0 +1,22 @@
+# Ignorar archivos de Python
+__pycache__/
+*.py[cod]
+
+# Ignorar archivos de configuración de entornos virtuales
+venv/
+env
+.venv
+
+# Ignorar archivos de configuración de IDEs
+.idea/
+*.swp
+*.swo
+
+# Ignorar archivos de logs
+*.log
+
+# Ignorar archivos de sistema
+.DS_Store
+Thumbs.db
+
+db.py

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Gestión de Usuarios</h1>
+        
+        <form action="{{ url_for('crear_usuario') }}" method="POST" class="mb-4">
+            <div class="form-group">
+                <label for="nombre">Nombre de Usuario</label>
+                <input type="text" class="form-control" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" class="form-control" name="contrasena" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Crear Usuario</button>
+        </form>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre de Usuario</th>
+                    <th>Contraseña</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario['nombre'] }}</td>
+                    <td>{{ usuario['contrasena'] }}</td>
+                    <td>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#editarModal{{ usuario['_id'] }}">Editar</button>
+                        <form action="{{ url_for('eliminar_usuario', id=usuario['_id']) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+
+                <!-- Modal para editar un usuario -->
+                <div class="modal fade" id="editarModal{{ usuario['_id'] }}" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Editar Usuario</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ url_for('editar_usuario', id=usuario['_id']) }}" method="POST">
+                                    <div class="form-group">
+                                        <label for="editar-nombre">Nombre de Usuario</label>
+                                        <input type="text" class="form-control" name="nombre" value="{{ usuario['nombre'] }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editar-contrasena">Contraseña</label>
+                                        <input type="password" class="form-control" name="contrasena" value="{{ usuario['contrasena'] }}" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

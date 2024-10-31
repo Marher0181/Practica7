@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Empleados</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Empleados</h1>
+        <a href="{{ url_for('crear_empleado') }}" class="btn btn-primary mb-2">Nuevo Empleado</a>
+        <a href="{{ url_for('upload') }}" class="btn btn-secondary mb-2">Subir CSV</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary mb-2">Cerrar Sesión</a>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Salario Bruto</th>
+                    <th>Salario Neto</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empleado in empleados %}
+                    <tr>
+                        <td>{{ empleado['NombreEmpleado'] }}</td>
+                        <td>Q{{ empleado['SalarioBruto'] | round(2) }}</td>
+                        <td>Q{{ empleado['SalarioNeto'] | round(2) }}</td>
+                        <td>
+                            <a href="{{ url_for('editar_empleado', id=empleado['_id']) }}" class="btn btn-warning btn-sm">Editar</a>
+                            <form action="{{ url_for('eliminar_empleado', id=empleado['_id']) }}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
