@@ -14,11 +14,11 @@
 <body>
     <div class="container">
         <h1>Lista de Empleados</h1>
-        <a href="{{ url_for('crear_empleado') }}" class="btn btn-primary mb-2">Nuevo Empleado</a>
-        <a href="{{ url_for('upload') }}" class="btn btn-success mb-2">Subir CSV</a>
+        <a href="{{ url_for('crear_empleado') }}" class="btn btn-success mb-2">Nuevo Empleado</a>
+        <a href="{{ url_for('upload') }}" class="btn btn-primary mb-2">Subir CSV</a>
         <a href="{{ url_for('logout') }}" class="btn btn-danger mb-2">Cerrar Sesión</a>
         <a href="{{ url_for('usuarios') }}" class="btn btn-info mb-2">Usuarios</a>
-        <a href="{{ url_for('estadisticas_empleados') }}">Ver Estadísticas de Empleados</a>
+        <a href="{{ url_for('estadisticas_empleados') }}"  class="btn btn-warning mb-2">Ver Estadísticas de Empleados</a>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
